@@ -1,0 +1,28 @@
+<div class="container">
+  <h2>User Management</h2>
+  <form (submit)="submitUser()">
+    <input type="text" [(ngModel)]="username" name="username" placeholder="Username" required />
+    <input type="number" [(ngModel)]="age" name="age" placeholder="Age" required />
+    <button type="submit">{{ editingUser ? 'Update' : 'Add' }} User</button>
+  </form>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Username</th>
+        <th>Age</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{ user.username }}</td>
+        <td>{{ user.age }}</td>
+        <td>
+          <button (click)="editUser(user)">Edit</button>
+          <button (click)="deleteUser(user._id!)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
